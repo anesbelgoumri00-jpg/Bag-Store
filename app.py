@@ -32,9 +32,12 @@ def init_db():
 
 
 def send_telegram(message):
+
     if not TELEGRAM_TOKEN:
-        print("Telegram Token غير موجود.")
+        print("❌ TELEGRAM_TOKEN غير موجود في Environment Variables")
         return
+
+    print("✅ TELEGRAM_TOKEN موجود")
 
     url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
 
@@ -44,13 +47,18 @@ def send_telegram(message):
     }).encode("utf-8")
 
     try:
-        request = urllib.request.Request(url, data=data, method="POST")
+        req = urllib.request.Request(
+            url,
+            data=data,
+            method="POST"
+        )
 
-        with urllib.request.urlopen(request, timeout=10) as response:
-            print("Telegram:", response.read().decode("utf-8"))
+        with urllib.request.urlopen(req, timeout=10) as response:
+            result = response.read().decode("utf-8")
+            print("✅ Telegram response:", result)
 
     except Exception as e:
-        print("Telegram error:", e)
+        print("❌ Telegram error:", repr(e))
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -92,7 +100,6 @@ def index():
                     )
                 )
 
-            # رسالة Telegram
             telegram_message = f"""
 🛍️ طلب جديد!
 
@@ -148,9 +155,11 @@ def admin():
     )
 
 
-if __name__ == "__main__":
+# إنشاء قاعدة البيانات عند تشغيل التطبيق
+init_db()
 
-    init_db()
+
+if __name__ == "__main__":
 
     app.run(
         host="127.0.0.1",
