@@ -1,0 +1,87 @@
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flex Bag — Monogram 2026</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="top">WELCOME TO OUR STORE</div>
+
+  <header>
+    <div class="menu">☰</div>
+    <div class="search">⌕</div>
+    <div class="logo">
+      <div class="logo-bags">▰ ◼ ▰</div>
+      <span>FLEX BAG</span>
+    </div>
+    <div class="icons">♙　🛍</div>
+  </header>
+
+  <div class="announcement">استفد من هذا العرض الحصري — الكمية محدودة</div>
+
+  <main>
+    <section class="product">
+      <div class="product-image" aria-label="صورة الحقيبة">
+        <div class="bag">
+          <div class="strap"></div>
+          <div class="bag-body">
+            <div class="pocket">
+              <span>◆</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-info">
+        <div class="badge">عرض محدود</div>
+        <h1>Monogram 2026</h1>
+        <p class="subtitle">Sacoche Lacoste — تصميم أنيق للاستعمال اليومي</p>
+
+        <div class="price">
+          <strong>2500 DA</strong>
+          <del>3500 DA</del>
+        </div>
+
+        <div class="features">
+          <span>✓ جودة ممتازة</span>
+          <span>✓ توصيل لجميع الولايات</span>
+          <span>✓ الدفع عند الاستلام</span>
+        </div>
+
+        <form method="POST" class="order-form" id="orderForm">
+          <h2>استمارة الطلب</h2>
+          <p class="hint">أدخل معلوماتك وسنتصل بك لتأكيد الطلب</p>
+
+          {% if message %}
+            <div class="error">{{ message }}</div>
+          {% endif %}
+
+          <label>الاسم الكامل *</label>
+          <input name="name" required placeholder="الاسم الكامل">
+
+          <label>رقم الهاتف *</label>
+          <input name="phone" required inputmode="tel" placeholder="05 / 06 / 07 xx xx xx xx">
+
+          <label>الولاية *</label>
+          <select name="wilaya" required>
+            <option value="">اختر الولاية</option>
+            <option>سطيف</option><option>الجزائر</option><option>وهران</option>
+            <option>قسنطينة</option><option>باتنة</option><option>عنابة</option>
+            <option>بجاية</option><option>برج بوعريريج</option><option>البليدة</option>
+          </select>
+
+          <label>البلدية *</label>
+          <input name="commune" required placeholder="اكتب اسم البلدية">
+
+          <button type="submit">🛍　اشترِ الآن</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 Flex Bag — جميع الحقوق محفوظة</footer>
+</body>
+</html>

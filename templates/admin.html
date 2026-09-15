@@ -1,0 +1,21 @@
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>طلبات المتجر</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body>
+<div class="admin">
+  <h1>طلبات المتجر</h1>
+  <div class="table-wrap">
+  <table>
+    <tr><th>#</th><th>الاسم</th><th>الهاتف</th><th>الولاية</th><th>البلدية</th><th>المنتج</th><th>التاريخ</th></tr>
+    {% for o in orders %}
+    <tr>{% for cell in o %}<td>{{ cell }}</td>{% endfor %}</tr>
+    {% else %}
+    <tr><td colspan="7">لا توجد طلبات بعد.</td></tr>
+    {% endfor %}
+  </table>
+  </div>
+</div>
+</body></html>

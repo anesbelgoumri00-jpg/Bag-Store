@@ -1,0 +1,37 @@
+
+*{box-sizing:border-box}
+body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#f7f7f7;color:#222}
+.top{background:#202020;color:#fff;text-align:center;padding:17px;font-size:14px;letter-spacing:1px}
+header{height:92px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 5%;border-bottom:1px solid #eee}
+.menu,.search,.icons{font-size:25px;color:#333}
+.logo{text-align:center;font-weight:bold}.logo-bags{font-size:25px;letter-spacing:-5px}.logo span{font-size:13px}
+.announcement{background:#222;color:white;text-align:center;padding:16px;font-weight:bold;font-size:17px}
+main{max-width:1100px;margin:auto;padding:30px 18px}
+.product{display:grid;grid-template-columns:1.05fr .95fr;gap:38px;align-items:start}
+.product-image{min-height:650px;background:linear-gradient(145deg,#eee,#ddd);border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.bag{position:relative;width:390px;height:390px;transform:rotate(-4deg)}
+.bag-body{position:absolute;left:50px;top:95px;width:300px;height:225px;border-radius:28px 28px 40px 40px;background:linear-gradient(145deg,#252525,#080808);box-shadow:0 20px 35px #777;border:5px solid #111}
+.pocket{position:absolute;left:18px;right:18px;bottom:18px;height:105px;border-radius:16px;background:#151515;border:2px solid #333;display:flex;align-items:center;justify-content:flex-start;padding-right:22px;color:#aaa;font-size:30px}
+.strap{position:absolute;z-index:3;width:390px;height:25px;background:#171717;top:38px;left:-5px;transform:rotate(48deg);border-radius:15px;opacity:.9}
+.product-info{background:#fff;border-radius:15px;padding:28px;box-shadow:0 5px 25px #ddd}
+.badge{display:inline-block;background:#111;color:#fff;border-radius:20px;padding:7px 14px;font-size:13px}
+h1{font-size:36px;margin:18px 0 8px}
+.subtitle{color:#777;line-height:1.8}
+.price{display:flex;align-items:center;gap:16px;margin:22px 0}.price strong{font-size:31px}.price del{color:#999;font-size:20px}
+.features{display:grid;gap:8px;background:#f7f7f7;border-radius:10px;padding:15px;margin-bottom:20px;color:#444}
+.order-form{border-top:1px solid #eee;padding-top:20px}.order-form h2{margin:0 0 5px}.hint{color:#777;font-size:14px}
+label{display:block;margin:14px 0 7px;font-weight:bold}
+input,select{width:100%;padding:15px;border:1px solid #ccc;border-radius:9px;font-size:16px;background:white}
+button{width:100%;margin-top:20px;padding:17px;border:0;border-radius:10px;background:linear-gradient(90deg,#ff3500,#ff7028);color:#fff;font-size:19px;font-weight:bold;cursor:pointer}
+button:hover{filter:brightness(.95)}
+.error{background:#ffe8e8;color:#a00;padding:10px;border-radius:8px}
+footer{text-align:center;padding:30px;color:#777}
+.success{max-width:600px;margin:80px auto;background:#fff;padding:45px;text-align:center;border-radius:18px;box-shadow:0 5px 25px #ddd}
+.check{font-size:50px}.success a{display:inline-block;margin-top:20px;background:#111;color:#fff;padding:12px 20px;border-radius:8px;text-decoration:none}
+.admin{padding:30px;max-width:1200px;margin:auto}.table-wrap{overflow:auto;background:#fff;border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:850px}th,td{padding:12px;border-bottom:1px solid #eee;text-align:right}th{background:#222;color:#fff}
+
+@media(max-width:800px){
+  .product{grid-template-columns:1fr}.product-image{min-height:440px}.bag{transform:scale(.82) rotate(-4deg)}
+  h1{font-size:29px}.product-info{padding:20px}
+}
