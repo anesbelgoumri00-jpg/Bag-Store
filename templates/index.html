@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Flex Bag — Monogram 2026</title>
+  <title>VEYRO — Urban Bags</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
@@ -18,7 +18,7 @@
 
     <div class="logo">
       <div class="logo-bags">▰ ◼ ▰</div>
-      <span>FLEX BAG</span>
+      <span>VEYRO — Urban Bags</span>
     </div>
 
     <div class="icons">♙　🛍</div>
@@ -32,17 +32,40 @@
 
     <section class="product">
 
-      <div class="product-image" aria-label="صورة الحقيبة">
-        <div class="bag">
-          <div class="strap"></div>
+      <!-- صور المنتج -->
+      <div class="product-image" aria-label="صور الحقيبة">
 
-          <div class="bag-body">
-            <div class="pocket">
-              <span>◆</span>
+        <div class="slider">
+
+          <div class="slides">
+
+            <div class="slide">
+              <img src="{{ url_for('static', filename='images/bag1.jpg') }}"
+                   alt="Sacoche Lacoste">
             </div>
+
+            <div class="slide">
+              <img src="{{ url_for('static', filename='images/bag2.jpg') }}"
+                   alt="Sacoche Lacoste">
+            </div>
+
+          </div>
+
+          <button class="slider-arrow prev" type="button" aria-label="الصورة السابقة">
+            ❮
+          </button>
+
+          <button class="slider-arrow next" type="button" aria-label="الصورة التالية">
+            ❯
+          </button>
+
+          <div class="slider-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
           </div>
 
         </div>
+
       </div>
 
       <div class="product-info">
@@ -118,7 +141,6 @@
             placeholder="اكتب اسم البلدية"
           >
 
-          <!-- اختيار اللون -->
           <label>لون الحقيبة *</label>
 
           <div class="color-options">
@@ -160,8 +182,60 @@
   </main>
 
   <footer>
-    © 2026 Flex Bag — جميع الحقوق محفوظة
+    © 2026 VEYRO — Urban Bags — جميع الحقوق محفوظة
   </footer>
+
+  <script>
+    const slides = document.querySelector(".slides");
+    const dots = document.querySelectorAll(".dot");
+    const next = document.querySelector(".next");
+    const prev = document.querySelector(".prev");
+
+    let current = 0;
+
+    function showSlide(index) {
+      current = (index + 2) % 2;
+
+      slides.style.transform = `translateX(${current * 100}%)`;
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === current);
+      });
+    }
+
+    next.addEventListener("click", () => {
+      showSlide(current + 1);
+    });
+
+    prev.addEventListener("click", () => {
+      showSlide(current - 1);
+    });
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener("click", () => {
+        showSlide(i);
+      });
+    });
+
+    let startX = 0;
+    let endX = 0;
+
+    slides.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].clientX;
+    });
+
+    slides.addEventListener("touchend", (e) => {
+      endX = e.changedTouches[0].clientX;
+
+      if (startX - endX > 50) {
+        showSlide(current + 1);
+      }
+
+      if (endX - startX > 50) {
+        showSlide(current - 1);
+      }
+    });
+  </script>
 
 </body>
 </html>
