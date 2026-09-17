@@ -25,10 +25,22 @@ def init_db():
                 wilaya TEXT NOT NULL,
                 commune TEXT NOT NULL,
                 product TEXT NOT NULL,
+                color TEXT NOT NULL,
                 price TEXT NOT NULL,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         """)
+
+        # إضافة عمود اللون إذا كانت قاعدة البيانات قديمة
+        columns = [
+            row[1]
+            for row in con.execute("PRAGMA table_info(orders)").fetchall()
+        ]
+
+        if "color" not in columns:
+            con.execute(
+                "ALTER TABLE orders ADD COLUMN color TEXT DEFAULT 'غير محدد'"
+            )
 
 
 def send_telegram(message):
@@ -73,12 +85,19 @@ def index():
         wilaya = request.form.get("wilaya", "").strip()
         commune = request.form.get("commune", "").strip()
 
+        # اللون
+        color = request.form.get("color", "").strip()
+
         product = "Sacoche Lacoste"
         price = "2500 DA"
 
-        if not all([name, phone, wilaya, commune]):
+        if not all([name, phone, wilaya, commune, color]):
 
-            message = "يرجى ملء جميع الخانات."
+            message = "يرجى ملء جميع الخانات واختيار اللون."
+
+        elif color not in ["أزرق", "أسود"]:
+
+            message = "اللون المختار غير صحيح."
 
         else:
 
@@ -87,8 +106,8 @@ def index():
                 con.execute(
                     """
                     INSERT INTO orders
-                    (name, phone, wilaya, commune, product, price)
-                    VALUES (?, ?, ?, ?, ?, ?)
+                    (name, phone, wilaya, commune, product, color, price)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)
                     """,
                     (
                         name,
@@ -96,6 +115,7 @@ def index():
                         wilaya,
                         commune,
                         product,
+                        color,
                         price
                     )
                 )
@@ -110,6 +130,7 @@ def index():
 🏠 البلدية: {commune}
 
 👜 المنتج: {product}
+🎨 اللون: {color}
 💰 السعر: {price}
 """
 
@@ -142,6 +163,7 @@ def admin():
                 wilaya,
                 commune,
                 product,
+                color,
                 price,
                 created_at
             FROM orders
