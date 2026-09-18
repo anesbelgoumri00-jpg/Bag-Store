@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="ar" dir="rtl">
 
@@ -18,7 +17,6 @@
     WELCOME TO OUR STORE
   </div>
 
-
   <header>
 
     <div class="menu">☰</div>
@@ -36,7 +34,6 @@
 
   </header>
 
-
   <div class="announcement">
     استفد من هذا العرض الحصري — الكمية محدودة
   </div>
@@ -46,70 +43,47 @@
 
     <section class="product">
 
-
-      <!-- ========================= -->
-      <!-- صور المنتج -->
-      <!-- ========================= -->
-
-      <div class="product-image"
-           aria-label="صور الحقيبة">
+      <!-- الصور -->
+      <div class="product-image">
 
         <div class="slider">
 
           <div class="slides">
 
-
-            <!-- الصورة الأولى -->
-
-            <div class="slide">
-
+            <div class="slide active-slide">
               <img
                 src="{{ url_for('static', filename='20260917_171832.png') }}"
                 alt="Sacoche Lacoste">
-
             </div>
 
-
-            <!-- الصورة الثانية -->
-
             <div class="slide">
-
               <img
                 src="{{ url_for('static', filename='20260917_171913.png') }}"
                 alt="Sacoche Lacoste">
-
             </div>
-
 
           </div>
 
 
-          <!-- زر السابق -->
-
+          <!-- السهم السابق -->
           <button
             class="slider-arrow prev"
             type="button"
             aria-label="الصورة السابقة">
-
             ❮
-
           </button>
 
 
-          <!-- زر التالي -->
-
+          <!-- السهم التالي -->
           <button
             class="slider-arrow next"
             type="button"
             aria-label="الصورة التالية">
-
             ❯
-
           </button>
 
 
           <!-- النقاط -->
-
           <div class="slider-dots">
 
             <span class="dot active"></span>
@@ -118,29 +92,21 @@
 
           </div>
 
-
         </div>
 
       </div>
 
 
-
-      <!-- ========================= -->
       <!-- معلومات المنتج -->
-      <!-- ========================= -->
-
       <div class="product-info">
-
 
         <div class="badge">
           عرض محدود
         </div>
 
-
         <h1>
           Monogram 2026
         </h1>
-
 
         <p class="subtitle">
           Sacoche Lacoste — تصميم أنيق للاستعمال اليومي
@@ -177,21 +143,15 @@
         </div>
 
 
-
-        <!-- ========================= -->
-        <!-- استمارة الطلب -->
-        <!-- ========================= -->
-
+        <!-- الطلب -->
         <form
           method="POST"
           class="order-form"
           id="orderForm">
 
-
           <h2>
             استمارة الطلب
           </h2>
-
 
           <p class="hint">
             أدخل معلوماتك وسنتصل بك لتأكيد الطلب
@@ -200,15 +160,12 @@
 
           {% if message %}
 
-            <div class="error">
-              {{ message }}
-            </div>
+          <div class="error">
+            {{ message }}
+          </div>
 
           {% endif %}
 
-
-
-          <!-- الاسم -->
 
           <label>
             الاسم الكامل *
@@ -220,9 +177,6 @@
             placeholder="الاسم الكامل">
 
 
-
-          <!-- الهاتف -->
-
           <label>
             رقم الهاتف *
           </label>
@@ -230,4 +184,245 @@
           <input
             name="phone"
             required
-            input
+            inputmode="tel"
+            placeholder="05 / 06 / 07 xx xx xx xx">
+
+
+          <label>
+            الولاية *
+          </label>
+
+          <select
+            name="wilaya"
+            required>
+
+            <option value="">
+              اختر الولاية
+            </option>
+
+            <option>سطيف</option>
+            <option>الجزائر</option>
+            <option>وهران</option>
+            <option>قسنطينة</option>
+            <option>باتنة</option>
+            <option>عنابة</option>
+            <option>بجاية</option>
+            <option>برج بوعريريج</option>
+            <option>البليدة</option>
+
+          </select>
+
+
+          <label>
+            البلدية *
+          </label>
+
+          <input
+            name="commune"
+            required
+            placeholder="اكتب اسم البلدية">
+
+
+          <label>
+            لون الحقيبة *
+          </label>
+
+
+          <div class="color-options">
+
+            <label class="color-option">
+
+              <input
+                type="radio"
+                name="color"
+                value="أزرق"
+                required>
+
+              <span class="color-circle blue"></span>
+
+              <span>
+                أزرق
+              </span>
+
+            </label>
+
+
+            <label class="color-option">
+
+              <input
+                type="radio"
+                name="color"
+                value="أسود"
+                required>
+
+              <span class="color-circle black"></span>
+
+              <span>
+                أسود
+              </span>
+
+            </label>
+
+          </div>
+
+
+          <button type="submit">
+            🛍　اشترِ الآن
+          </button>
+
+        </form>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    © 2026 VEYRO — Urban Bags — جميع الحقوق محفوظة
+  </footer>
+
+
+  <!-- JavaScript للسلايدر -->
+  <script>
+
+    const slides = document.querySelectorAll(".slide");
+    const dots = document.querySelectorAll(".dot");
+
+    const nextButton =
+      document.querySelector(".next");
+
+    const prevButton =
+      document.querySelector(".prev");
+
+    let current = 0;
+
+
+    function showSlide(index) {
+
+      if (index >= slides.length) {
+        current = 0;
+      }
+
+      else if (index < 0) {
+        current = slides.length - 1;
+      }
+
+      else {
+        current = index;
+      }
+
+
+      slides.forEach((slide, i) => {
+
+        slide.classList.toggle(
+          "active-slide",
+          i === current
+        );
+
+      });
+
+
+      dots.forEach((dot, i) => {
+
+        dot.classList.toggle(
+          "active",
+          i === current
+        );
+
+      });
+
+    }
+
+
+    nextButton.addEventListener(
+      "click",
+      function () {
+
+        showSlide(current + 1);
+
+      }
+    );
+
+
+    prevButton.addEventListener(
+      "click",
+      function () {
+
+        showSlide(current - 1);
+
+      }
+    );
+
+
+    dots.forEach((dot, index) => {
+
+      dot.addEventListener(
+        "click",
+        function () {
+
+          showSlide(index);
+
+        }
+      );
+
+    });
+
+
+    /* السحب بالهاتف */
+
+    let startX = 0;
+
+    let endX = 0;
+
+
+    const slider =
+      document.querySelector(".slider");
+
+
+    slider.addEventListener(
+      "touchstart",
+      function (event) {
+
+        startX =
+          event.touches[0].clientX;
+
+      }
+    );
+
+
+    slider.addEventListener(
+      "touchend",
+      function (event) {
+
+        endX =
+          event.changedTouches[0].clientX;
+
+
+        if (startX - endX > 50) {
+
+          showSlide(current + 1);
+
+        }
+
+
+        if (endX - startX > 50) {
+
+          showSlide(current - 1);
+
+        }
+
+      }
+    );
+
+
+    /* التأكد من الصورة الأولى عند فتح الصفحة */
+
+    showSlide(0);
+
+  </script>
+
+</body>
+
+</html>
