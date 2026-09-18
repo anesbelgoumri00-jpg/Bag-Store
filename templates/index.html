@@ -1,19 +1,28 @@
 
 <!doctype html>
 <html lang="ar" dir="rtl">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>VEYRO — Urban Bags</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
-  <div class="top">WELCOME TO OUR STORE</div>
+  <div class="top">
+    WELCOME TO OUR STORE
+  </div>
+
 
   <header>
+
     <div class="menu">☰</div>
+
     <div class="search">⌕</div>
 
     <div class="logo">
@@ -21,221 +30,204 @@
       <span>VEYRO — Urban Bags</span>
     </div>
 
-    <div class="icons">♙　🛍</div>
+    <div class="icons">
+      ♙　🛍
+    </div>
+
   </header>
+
 
   <div class="announcement">
     استفد من هذا العرض الحصري — الكمية محدودة
   </div>
 
+
   <main>
 
     <section class="product">
 
+
+      <!-- ========================= -->
       <!-- صور المنتج -->
-      <div class="product-image" aria-label="صور الحقيبة">
+      <!-- ========================= -->
+
+      <div class="product-image"
+           aria-label="صور الحقيبة">
 
         <div class="slider">
 
           <div class="slides">
 
-            <div class="slide">
-              <img src="{{ url_for('static', filename='../static/20260917_171832.png') }}"
-                   alt="Sacoche Lacoste">
-            </div>
+
+            <!-- الصورة الأولى -->
 
             <div class="slide">
-              <img src="{{ url_for('static', filename='../static/20260917_171913.png') }}"
-                   alt="Sacoche Lacoste">
+
+              <img
+                src="{{ url_for('static', filename='20260917_171832.png') }}"
+                alt="Sacoche Lacoste">
+
             </div>
+
+
+            <!-- الصورة الثانية -->
+
+            <div class="slide">
+
+              <img
+                src="{{ url_for('static', filename='20260917_171913.png') }}"
+                alt="Sacoche Lacoste">
+
+            </div>
+
 
           </div>
 
-          <button class="slider-arrow prev" type="button" aria-label="الصورة السابقة">
+
+          <!-- زر السابق -->
+
+          <button
+            class="slider-arrow prev"
+            type="button"
+            aria-label="الصورة السابقة">
+
             ❮
+
           </button>
 
-          <button class="slider-arrow next" type="button" aria-label="الصورة التالية">
+
+          <!-- زر التالي -->
+
+          <button
+            class="slider-arrow next"
+            type="button"
+            aria-label="الصورة التالية">
+
             ❯
+
           </button>
+
+
+          <!-- النقاط -->
 
           <div class="slider-dots">
+
             <span class="dot active"></span>
+
             <span class="dot"></span>
+
           </div>
+
 
         </div>
 
       </div>
 
+
+
+      <!-- ========================= -->
+      <!-- معلومات المنتج -->
+      <!-- ========================= -->
+
       <div class="product-info">
 
-        <div class="badge">عرض محدود</div>
 
-        <h1>Monogram 2026</h1>
+        <div class="badge">
+          عرض محدود
+        </div>
+
+
+        <h1>
+          Monogram 2026
+        </h1>
+
 
         <p class="subtitle">
           Sacoche Lacoste — تصميم أنيق للاستعمال اليومي
         </p>
 
+
         <div class="price">
-          <strong>2500 DA</strong>
-          <del>3500 DA</del>
+
+          <strong>
+            2500 DA
+          </strong>
+
+          <del>
+            3500 DA
+          </del>
+
         </div>
+
 
         <div class="features">
-          <span>✓ جودة ممتازة</span>
-          <span>✓ توصيل لجميع الولايات</span>
-          <span>✓ الدفع عند الاستلام</span>
+
+          <span>
+            ✓ جودة ممتازة
+          </span>
+
+          <span>
+            ✓ توصيل لجميع الولايات
+          </span>
+
+          <span>
+            ✓ الدفع عند الاستلام
+          </span>
+
         </div>
 
-        <form method="POST" class="order-form" id="orderForm">
 
-          <h2>استمارة الطلب</h2>
+
+        <!-- ========================= -->
+        <!-- استمارة الطلب -->
+        <!-- ========================= -->
+
+        <form
+          method="POST"
+          class="order-form"
+          id="orderForm">
+
+
+          <h2>
+            استمارة الطلب
+          </h2>
+
 
           <p class="hint">
             أدخل معلوماتك وسنتصل بك لتأكيد الطلب
           </p>
 
+
           {% if message %}
-            <div class="error">{{ message }}</div>
+
+            <div class="error">
+              {{ message }}
+            </div>
+
           {% endif %}
 
-          <label>الاسم الكامل *</label>
+
+
+          <!-- الاسم -->
+
+          <label>
+            الاسم الكامل *
+          </label>
 
           <input
             name="name"
             required
-            placeholder="الاسم الكامل"
-          >
+            placeholder="الاسم الكامل">
 
-          <label>رقم الهاتف *</label>
+
+
+          <!-- الهاتف -->
+
+          <label>
+            رقم الهاتف *
+          </label>
 
           <input
             name="phone"
             required
-            inputmode="tel"
-            placeholder="05 / 06 / 07 xx xx xx xx"
-          >
-
-          <label>الولاية *</label>
-
-          <select name="wilaya" required>
-            <option value="">اختر الولاية</option>
-            <option>سطيف</option>
-            <option>الجزائر</option>
-            <option>وهران</option>
-            <option>قسنطينة</option>
-            <option>باتنة</option>
-            <option>عنابة</option>
-            <option>بجاية</option>
-            <option>برج بوعريريج</option>
-            <option>البليدة</option>
-          </select>
-
-          <label>البلدية *</label>
-
-          <input
-            name="commune"
-            required
-            placeholder="اكتب اسم البلدية"
-          >
-
-          <label>لون الحقيبة *</label>
-
-          <div class="color-options">
-
-            <label class="color-option">
-              <input
-                type="radio"
-                name="color"
-                value="أزرق"
-                required
-              >
-              <span class="color-circle blue"></span>
-              <span>أزرق</span>
-            </label>
-
-            <label class="color-option">
-              <input
-                type="radio"
-                name="color"
-                value="أسود"
-                required
-              >
-              <span class="color-circle black"></span>
-              <span>أسود</span>
-            </label>
-
-          </div>
-
-          <button type="submit">
-            🛍　اشترِ الآن
-          </button>
-
-        </form>
-
-      </div>
-
-    </section>
-
-  </main>
-
-  <footer>
-    © 2026 VEYRO — Urban Bags — جميع الحقوق محفوظة
-  </footer>
-
-  <script>
-    const slides = document.querySelector(".slides");
-    const dots = document.querySelectorAll(".dot");
-    const next = document.querySelector(".next");
-    const prev = document.querySelector(".prev");
-
-    let current = 0;
-
-    function showSlide(index) {
-      current = (index + 2) % 2;
-
-      slides.style.transform = `translateX(${current * 100}%)`;
-
-      dots.forEach((dot, i) => {
-        dot.classList.toggle("active", i === current);
-      });
-    }
-
-    next.addEventListener("click", () => {
-      showSlide(current + 1);
-    });
-
-    prev.addEventListener("click", () => {
-      showSlide(current - 1);
-    });
-
-    dots.forEach((dot, i) => {
-      dot.addEventListener("click", () => {
-        showSlide(i);
-      });
-    });
-
-    let startX = 0;
-    let endX = 0;
-
-    slides.addEventListener("touchstart", (e) => {
-      startX = e.touches[0].clientX;
-    });
-
-    slides.addEventListener("touchend", (e) => {
-      endX = e.changedTouches[0].clientX;
-
-      if (startX - endX > 50) {
-        showSlide(current + 1);
-      }
-
-      if (endX - startX > 50) {
-        showSlide(current - 1);
-      }
-    });
-  </script>
-
-</body>
-</html>
+            input
