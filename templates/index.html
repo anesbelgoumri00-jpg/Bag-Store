@@ -8,48 +8,66 @@
 
   <title>VEYRO — Urban Bags</title>
 
+  <meta name="description"
+        content="VEYRO — حقيبة Monogram 2026 بتصميم أنيق للاستعمال اليومي. الدفع عند الاستلام والتوصيل لجميع الولايات.">
+
   <link rel="stylesheet"
         href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
+  <!-- =========================
+       TOP BAR
+  ========================== -->
+
   <div class="top">
-    WELCOME TO OUR STORE
+    WELCOME TO VEYRO
   </div>
 
 
+  <!-- =========================
+       HEADER
+  ========================== -->
+
   <header>
 
-    <div class="menu">☰</div>
-
-    <div class="search">⌕</div>
-
     <div class="logo">
-      <div class="logo-bags">▰ ◼ ▰</div>
-      <span>VEYRO — Urban Bags</span>
-    </div>
 
-    <div class="icons">
-      ♙　🛍
+      <div class="logo-bags">
+        ▰ ◼ ▰
+      </div>
+
+      <span>
+        VEYRO — URBAN BAGS
+      </span>
+
     </div>
 
   </header>
 
 
+  <!-- =========================
+       ANNOUNCEMENT
+  ========================== -->
+
   <div class="announcement">
-    استفد من هذا العرض الحصري — الكمية محدودة
+    استفد من العرض الحالي — الكمية محدودة
   </div>
 
+
+  <!-- =========================
+       MAIN
+  ========================== -->
 
   <main>
 
     <section class="product">
 
 
-      <!-- ========================= -->
-      <!-- الصور -->
-      <!-- ========================= -->
+      <!-- =========================
+           PRODUCT IMAGES
+      ========================== -->
 
       <div class="product-image">
 
@@ -57,25 +75,33 @@
 
           <div class="slides">
 
+
+            <!-- الصورة الأولى -->
+
             <div class="slide active-slide">
 
               <img
                 src="{{ url_for('static', filename='20260917_171832.png') }}"
-                alt="Sacoche Lacoste">
+                alt="Sacoche Monogram 2026">
 
             </div>
 
+
+            <!-- الصورة الثانية -->
 
             <div class="slide">
 
               <img
                 src="{{ url_for('static', filename='20260917_171913.png') }}"
-                alt="Sacoche Lacoste">
+                alt="Sacoche Monogram 2026">
 
             </div>
 
+
           </div>
 
+
+          <!-- السابق -->
 
           <button
             class="slider-arrow prev"
@@ -87,6 +113,8 @@
           </button>
 
 
+          <!-- التالي -->
+
           <button
             class="slider-arrow next"
             type="button"
@@ -97,11 +125,19 @@
           </button>
 
 
+          <!-- النقاط -->
+
           <div class="slider-dots">
 
-            <span class="dot active"></span>
+            <span
+              class="dot active"
+              aria-label="الصورة الأولى">
+            </span>
 
-            <span class="dot"></span>
+            <span
+              class="dot"
+              aria-label="الصورة الثانية">
+            </span>
 
           </div>
 
@@ -110,28 +146,35 @@
       </div>
 
 
-
-      <!-- ========================= -->
-      <!-- معلومات المنتج -->
-      <!-- ========================= -->
+      <!-- =========================
+           PRODUCT INFORMATION
+      ========================== -->
 
       <div class="product-info">
 
+
+        <!-- Badge -->
 
         <div class="badge">
           عرض محدود
         </div>
 
 
+        <!-- Product title -->
+
         <h1>
           Monogram 2026
         </h1>
 
 
+        <!-- Description -->
+
         <p class="subtitle">
-          Sacoche  — تصميم أنيق للاستعمال اليومي
+          Sacoche بتصميم أنيق وعصري، مناسبة للاستعمال اليومي.
         </p>
 
+
+        <!-- Price -->
 
         <div class="price">
 
@@ -145,6 +188,10 @@
 
         </div>
 
+
+        <!-- =========================
+             FEATURES
+        ========================== -->
 
         <div class="features">
 
@@ -163,10 +210,9 @@
         </div>
 
 
-
-        <!-- ========================= -->
-        <!-- استمارة الطلب -->
-        <!-- ========================= -->
+        <!-- =========================
+             ORDER FORM
+        ========================== -->
 
         <form
           method="POST"
@@ -175,14 +221,16 @@
 
 
           <h2>
-            استمارة الطلب
+            اطلب الآن
           </h2>
 
 
           <p class="hint">
-            أدخل معلوماتك وسنتصل بك لتأكيد الطلب
+            أدخل معلوماتك وسنتصل بك لتأكيد الطلب.
           </p>
 
+
+          <!-- رسالة الخطأ -->
 
           {% if message %}
 
@@ -193,39 +241,46 @@
           {% endif %}
 
 
+          <!-- =========================
+               NAME
+          ========================== -->
 
-          <!-- الاسم -->
-
-          <label>
+          <label for="name">
             الاسم الكامل *
           </label>
 
           <input
+            id="name"
             type="text"
             name="name"
             required
-            placeholder="الاسم الكامل">
+            autocomplete="name"
+            placeholder="اكتب اسمك الكامل">
 
 
+          <!-- =========================
+               PHONE
+          ========================== -->
 
-          <!-- الهاتف -->
-
-          <label>
+          <label for="phone">
             رقم الهاتف *
           </label>
 
           <input
+            id="phone"
             type="tel"
             name="phone"
             required
             inputmode="tel"
+            autocomplete="tel"
             placeholder="05 / 06 / 07 xx xx xx xx">
 
 
+          <!-- =========================
+               WILAYA
+          ========================== -->
 
-          <!-- الولاية -->
-
-          <label>
+          <label for="wilaya">
             الولاية *
           </label>
 
@@ -298,24 +353,26 @@
           </select>
 
 
+          <!-- =========================
+               COMMUNE
+          ========================== -->
 
-          <!-- البلدية -->
-
-          <label>
+          <label for="commune">
             البلدية *
           </label>
 
           <input
+            id="commune"
             type="text"
             name="commune"
             required
+            autocomplete="address-level2"
             placeholder="اكتب اسم البلدية">
 
 
-
-          <!-- ========================= -->
-          <!-- نوع التوصيل -->
-          <!-- ========================= -->
+          <!-- =========================
+               DELIVERY TYPE
+          ========================== -->
 
           <label>
             طريقة التوصيل *
@@ -324,6 +381,8 @@
 
           <div class="delivery-options">
 
+
+            <!-- HOME -->
 
             <label class="delivery-option">
 
@@ -339,6 +398,8 @@
 
             </label>
 
+
+            <!-- STOPDESK -->
 
             <label class="delivery-option">
 
@@ -358,8 +419,9 @@
           </div>
 
 
-
-          <!-- سعر التوصيل -->
+          <!-- =========================
+               DELIVERY PRICE
+          ========================== -->
 
           <div
             id="deliveryBox"
@@ -379,10 +441,9 @@
           </div>
 
 
-
-          <!-- ========================= -->
-          <!-- اللون -->
-          <!-- ========================= -->
+          <!-- =========================
+               COLOR
+          ========================== -->
 
           <label>
             لون الحقيبة *
@@ -391,6 +452,8 @@
 
           <div class="color-options">
 
+
+            <!-- BLUE -->
 
             <label class="color-option">
 
@@ -408,6 +471,8 @@
 
             </label>
 
+
+            <!-- BLACK -->
 
             <label class="color-option">
 
@@ -429,15 +494,15 @@
           </div>
 
 
-
-          <!-- ========================= -->
-          <!-- المجموع -->
-          <!-- ========================= -->
+          <!-- =========================
+               TOTAL
+          ========================== -->
 
           <div
             id="totalBox"
             class="total-box"
             style="display:none;">
+
 
             <div class="total-line">
 
@@ -480,11 +545,12 @@
           </div>
 
 
-
-          <!-- الزر -->
+          <!-- =========================
+               ORDER BUTTON
+          ========================== -->
 
           <button type="submit">
-            🛍　اشترِ الآن
+            🛍 اطلب الآن
           </button>
 
 
@@ -497,164 +563,28 @@
   </main>
 
 
+  <!-- =========================
+       FOOTER
+  ========================== -->
 
   <footer>
 
-    © 2026 VEYRO — Urban Bags — جميع الحقوق محفوظة
+    © 2026 VEYRO — Urban Bags
 
   </footer>
 
 
-
-  <!-- ================================================= -->
-  <!-- CSS إضافي خاص بالتوصيل -->
-  <!-- ================================================= -->
-
-  <style>
-
-    .delivery-options {
-
-      display: grid;
-
-      gap: 10px;
-
-      margin-top: 10px;
-
-    }
-
-
-    .delivery-option {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 10px;
-
-      margin: 0;
-
-      padding: 14px;
-
-      border: 1px solid #ddd;
-
-      border-radius: 10px;
-
-      background: #fafafa;
-
-      cursor: pointer;
-
-      transition: .2s;
-
-    }
-
-
-    .delivery-option:hover {
-
-      border-color: #222;
-
-      background: #f5f5f5;
-
-    }
-
-
-    .delivery-option input {
-
-      width: auto;
-
-      margin: 0;
-
-    }
-
-
-    .delivery-box {
-
-      margin-top: 15px;
-
-      padding: 14px;
-
-      background: #f7f7f7;
-
-      border-radius: 10px;
-
-      font-size: 16px;
-
-    }
-
-
-    .delivery-box strong {
-
-      margin-right: 5px;
-
-    }
-
-
-    .total-box {
-
-      margin-top: 20px;
-
-      padding: 18px;
-
-      background: #f7f7f7;
-
-      border-radius: 12px;
-
-      border: 1px solid #eee;
-
-    }
-
-
-    .total-line {
-
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: center;
-
-      padding: 8px 0;
-
-    }
-
-
-    .final-total {
-
-      margin-top: 10px;
-
-      padding-top: 15px;
-
-      border-top: 1px solid #ddd;
-
-      font-size: 20px;
-
-    }
-
-
-    .final-total strong {
-
-      font-size: 25px;
-
-    }
-
-  </style>
-
-
-
-  <!-- ================================================= -->
-  <!-- JavaScript -->
-  <!-- ================================================= -->
+  <!-- =================================================
+       JAVASCRIPT
+  ================================================= -->
 
   <script>
 
-
     /* =================================================
        أسعار NOEST
-       home = المنزل
-       stopdesk = المكتب
-       ================================================= */
-
+    ================================================= */
 
     const deliveryPrices = {
-
 
       "Adrar": {
         home: 1500,
@@ -939,57 +869,44 @@
     };
 
 
-
     /* =================================================
-       عناصر الصفحة
-       ================================================= */
-
+       ELEMENTS
+    ================================================= */
 
     const wilayaSelect =
       document.getElementById("wilaya");
 
-
     const deliveryBox =
       document.getElementById("deliveryBox");
-
 
     const deliveryPriceElement =
       document.getElementById("deliveryPrice");
 
-
     const totalBox =
       document.getElementById("totalBox");
-
 
     const totalDelivery =
       document.getElementById("totalDelivery");
 
-
     const totalPrice =
       document.getElementById("totalPrice");
-
 
     const deliveryRadios =
       document.querySelectorAll(
         'input[name="delivery_type"]'
       );
 
-
     const productPrice = 2500;
 
 
-
     /* =================================================
-       تحديث السعر
-       ================================================= */
-
+       UPDATE DELIVERY
+    ================================================= */
 
     function updateDeliveryPrice() {
 
-
       const wilaya =
         wilayaSelect.value;
-
 
       const selectedDelivery =
         document.querySelector(
@@ -1008,7 +925,6 @@
         totalBox.style.display = "none";
 
         return;
-
       }
 
 
@@ -1024,20 +940,13 @@
         productPrice + deliveryPrice;
 
 
-
-      /* سعر التوصيل */
-
       deliveryPriceElement.textContent =
         deliveryPrice + " DA";
 
 
-      /* مجموع التوصيل */
-
       totalDelivery.textContent =
         deliveryPrice + " DA";
 
-
-      /* المجموع النهائي */
 
       totalPrice.textContent =
         total + " DA";
@@ -1053,8 +962,9 @@
     }
 
 
-
-    /* عند تغيير الولاية */
+    /* =================================================
+       WILAYA CHANGE
+    ================================================= */
 
     wilayaSelect.addEventListener(
       "change",
@@ -1062,8 +972,9 @@
     );
 
 
-
-    /* عند تغيير طريقة التوصيل */
+    /* =================================================
+       DELIVERY CHANGE
+    ================================================= */
 
     deliveryRadios.forEach(
       function (radio) {
@@ -1077,34 +988,26 @@
     );
 
 
-
     /* =================================================
        SLIDER
-       ================================================= */
-
+    ================================================= */
 
     const slides =
       document.querySelectorAll(".slide");
 
-
     const dots =
       document.querySelectorAll(".dot");
-
 
     const nextButton =
       document.querySelector(".next");
 
-
     const prevButton =
       document.querySelector(".prev");
-
 
     let current = 0;
 
 
-
     function showSlide(index) {
-
 
       if (index >= slides.length) {
 
@@ -1152,6 +1055,7 @@
     }
 
 
+    /* التالي */
 
     nextButton.addEventListener(
       "click",
@@ -1163,6 +1067,7 @@
     );
 
 
+    /* السابق */
 
     prevButton.addEventListener(
       "click",
@@ -1174,6 +1079,7 @@
     );
 
 
+    /* النقاط */
 
     dots.forEach(
       function (dot, index) {
@@ -1191,14 +1097,11 @@
     );
 
 
-
     /* =================================================
-       السحب بالهاتف
-       ================================================= */
-
+       SWIPE MOBILE
+    ================================================= */
 
     let startX = 0;
-
     let endX = 0;
 
 
@@ -1213,7 +1116,8 @@
         startX =
           event.touches[0].clientX;
 
-      }
+      },
+      { passive: true }
     );
 
 
@@ -1238,17 +1142,18 @@
 
         }
 
-      }
+      },
+      { passive: true }
     );
 
 
-
-    /* الصورة الأولى */
+    /* =================================================
+       INITIAL SLIDE
+    ================================================= */
 
     showSlide(0);
 
   </script>
-
 
 </body>
 
